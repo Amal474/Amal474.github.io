@@ -1,13 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Portfolio - Mohammed Amal N</title>
-		<script type="module" crossorigin src="/assets/index-C1Z3WnTP.js"></script>
-		<link rel="stylesheet" crossorigin href="/assets/index-YCbAGI2O.css">
-	</head>
-	<body>
-		<canvas id="c"></canvas>
-	</body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Developer Portfolio – Sample Set</title>
+</head>
+<body>
+
+<!-- ================= SAMPLE 1: MINIMAL / INDIE STYLE ================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indie Game Developer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #111;
+      color: #f5f5f5;
+    }
+
+    nav {
+      padding: 1rem 2rem;
+      background: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: #f5f5f5;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero span { color: #00ff99; }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #1b1b1b;
+      padding: 1.5rem;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <strong>IndieDev</strong>
+    <div>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Hi, I'm an <span>Indie Game Developer</span></h1>
+    <p>I build small, fun, and experimental games.</p>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>I focus on rapid prototyping, gameplay loops, and game feel using Unity and Godot.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">Pixel Platformer</div>
+      <div class="card">Roguelike Prototype</div>
+      <div class="card">Game Jam Entry</div>
+    </div>
+  </section>
+
+  <footer>© 2025 Indie Game Developer</footer>
+</body>
+</html>
+
+<!-- ================= SAMPLE 2: AAA / TECHNICAL STYLE ================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Game Programmer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0e0e14;
+      color: #e0e0e0;
+    }
+
+    header {
+      padding: 5rem 3rem;
+      background: linear-gradient(135deg, #1f1f2e, #09090d);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    header p { max-width: 600px; }
+
+    section {
+      padding: 3rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .panel {
+      background: #161623;
+      border: 1px solid #2a2a3a;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .panel h3 { margin-top: 0; }
+
+    .badge {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.25rem 0.5rem;
+      background: #2e6cff;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Technical Game Programmer</h1>
+    <p>Specializing in performance optimization, AI systems, and engine-level gameplay code.</p>
+  </header>
+
+  <section>
+    <h2>Core Skills</h2>
+    <div class="grid">
+      <div class="panel">C++ Engine Programming</div>
+      <div class="panel">Unreal Engine Systems</div>
+      <div class="panel">AI & Behavior Trees</div>
+      <div class="panel">Multithreading</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Featured Work</h2>
+    <div class="grid">
+      <div class="panel">
+        <h3>FPS Combat System</h3>
+        <p>Weapon handling, recoil, and hit detection.</p>
+        <span class="badge">Unreal C++</span>
+      </div>
+      <div class="panel">
+        <h3>Enemy AI Framework</h3>
+        <p>Modular AI using behavior trees and EQS.</p>
+        <span class="badge">AI</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 Technical Game Programmer</footer>
+</body>
+</html>
+
+</body>
 </html>
