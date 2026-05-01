@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odoo Web Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideInUp 0.8s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        section:nth-child(odd) {
+            background: #f9f9f9;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #764ba2;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            color: #555;
+        }
+
+        .skill-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .skill-card li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-card li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            color: #667eea;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.2);
+        }
+
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .social-links i {
+            font-size: 1.2rem;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Web Developer</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Web/ Odoo Developer</h1>
+            <p>Specialized in building custom Odoo modules, extensions, and other web solutions</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+            <a href="#projects" class="cta-button">View My Work</a>
+            <a href="CV - Mohammed Amal - Senior Python Developer.pdf" title="Download CV" download class="cta-button"><i class="fas fa-download"></i></a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2><i class="fas fa-user-circle" style="margin-right: 0.5rem;"></i>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>About Me:</h3>
+                    <p>Welcome! I am a passionate Web/ Odoo developer with expertise in building custom modules, integrations, and enterprise solutions. I help businesses optimize their operations through tailored Web applications.</p>
+                </div>
+                <div class="about-text">
+                    <h3>Professional Summary:</h3>
+                    <p>With several years of experience in Web and Odoo development, I have successfully delivered projects ranging from small customizations to large-scale enterprise implementations. I combine technical expertise with a focus on user experience and business requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2><i class="fas fa-tools" style="margin-right: 0.5rem;"></i>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>🐍 Backend Development</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Dart</li>
+                        <li>TypeScript</li>
+                        <li>Java</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🎨 Frontend Development</h3>
+                    <ul>
+                        <li>JavaScript/ES6+</li>
+                        <li>QWeb Templates</li>
+                        <li>CSS3 & Bootstrap</li>
+                        <li>jQuery</li>
+                        <li>HTML5</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🧩 Odoo Specific</h3>
+                    <ul>
+                        <li>Module Development</li>
+                        <li>Views & Forms</li>
+                        <li>Reports & Workflows</li>
+                        <li>Fields & Models</li>
+                        <li>Access Control</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🔧 Tools & Platforms</h3>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
+                        <li>Linux/Ubuntu</li>
+                        <li>VS Code</li>
+                        <li>pgAdmin</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>📦 Frameworks</h3>
+                    <ul>
+                        <li>Odoo</li>
+                        <li>FastAPI</li>
+                        <li>Flask</li>
+                        <li>Flutter</li>
+                        <li>Openbravo</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🚀 Advanced Skills</h3>
+                    <ul>
+                        <li>Performance Optimization</li>
+                        <li>Security Implementation</li>
+                        <li>Third-party Integration</li>
+                        <li>Data Migration</li>
+                        <li>Custom Reporting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2><i class="fas fa-briefcase" style="margin-right: 0.5rem;"></i>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">📊</div>
+                    <div class="project-content">
+                        <h3>Erp System Development</h3>
+                        <p>ERP system in multi-company setup with custom automated HRMS.</p>
+                        <div class="project-tags">
+                            <span class="tag">Odoo</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag">React</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">💼</div>
+                    <div class="project-content">
+                        <h3>Government ERP Project</h3>
+                        <p>Custom ERP solution for government institutions with compliance and reporting features.</p>
+                        <div class="project-tags">
+                            <span class="tag">Openbravo</span>
+                            <span class="tag">Springboot</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🔌</div>
+                    <div class="project-content">
+                        <h3>Logistics Management System</h3>
+                        <p>A comprehensive logistics management solution built on Odoo, streamlining operations and improving efficiency.</p>
+                        <div class="project-tags">
+                            <span class="tag">Odoo</span>
+                            <span class="tag">Infor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2><i class="fas fa-cogs" style="margin-right: 0.5rem;"></i>Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Custom Module Development</h3>
+                    <p>Build custom Odoo modules tailored to your business requirements and processes.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>System Integration</h3>
+                    <p>Seamlessly integrate Odoo with third-party applications and systems via APIs.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Odoo Consulting</h3>
+                    <p>Get expert advice on system configuration, optimization, and best practices.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Maintenance & Support</h3>
+                    <p>Ongoing maintenance, bug fixes, and technical support for your Odoo system.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Performance Optimization</h3>
+                    <p>Enhance system performance through optimization and advanced development techniques.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Data Migration</h3>
+                    <p>Secure and efficient migration of data from legacy systems to Odoo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>Contact Information</h2>
+            <div style="max-width: 700px; margin: 0 auto; background: white; padding: 3rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <div style="text-align: center; margin-bottom: 2.5rem;">
+                    <h3 style="color: #667eea; font-size: 1.8rem; margin-bottom: 0.5rem;">Mohammed Amal N</h3>
+                    <p style="color: #999; font-size: 0.9rem;">Web/ Odoo Developer</p>
+                </div>
+
+                <div style="margin-bottom: 2.5rem;">
+                    <!-- Phone -->
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem; padding: 1rem; background: #f9f9f9; border-radius: 6px;">
+                        <i class="fas fa-phone" style="color: #667eea; font-size: 1.2rem; min-width: 30px; text-align: center; margin-right: 1rem;"></i>
+                        <div>
+                            <span style="color: #764ba2; font-weight: 600; margin-right: 0.5rem;">Phone:</span>
+                            <a href="tel:+966532136275" style="color: #667eea; text-decoration: none; font-size: 1rem; transition: opacity 0.3s ease;">
+                                +966 532 136 275
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem; padding: 1rem; background: #f9f9f9; border-radius: 6px;">
+                        <i class="fas fa-envelope" style="color: #667eea; font-size: 1.2rem; min-width: 30px; text-align: center; margin-right: 1rem;"></i>
+                        <div>
+                            <span style="color: #764ba2; font-weight: 600; margin-right: 0.5rem;">Email:</span>
+                            <a href="mailto:mohammedamal.n@gmail.com" style="color: #667eea; text-decoration: none; font-size: 1rem; transition: opacity 0.3s ease;">
+                                mohammedamal.n@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Current Location -->
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem; padding: 1rem; background: #f9f9f9; border-radius: 6px;">
+                        <i class="fas fa-map-marker-alt" style="color: #667eea; font-size: 1.2rem; min-width: 30px; text-align: center; margin-right: 1rem;"></i>
+                        <div>
+                            <span style="color: #764ba2; font-weight: 600; margin-right: 0.5rem;">Current Location:</span>
+                            <span style="color: #666; font-size: 1rem;">Jeddah, KSA</span>
+                        </div>
+                    </div>
+
+                    <!-- From -->
+                    <div style="display: flex; align-items: center; padding: 1rem; background: #f9f9f9; border-radius: 6px;">
+                        <i class="fas fa-map-pin" style="color: #667eea; font-size: 1.2rem; min-width: 30px; text-align: center; margin-right: 1rem;"></i>
+                        <div>
+                            <span style="color: #764ba2; font-weight: 600; margin-right: 0.5rem;">From:</span>
+                            <span style="color: #666; font-size: 1rem;">Kerala, India</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="color: #666; margin-top: 2rem; font-size: 0.95rem; text-align: center;">
+                  Feel free to reach out for any Web/ Odoo development projects or inquiries.
+                <a href="https://www.upwork.com/freelancers/~01ae76fb4e118c2e37" target="_blank" title="Upwork Profile"><i class="fas fa-briefcase"></i></a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/mohammed-amal-21b094141/" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Amal474" target="_blank" title="Github Account"><i class="fab fa-github"></i></a>
+            <a href="https://www.upwork.com/freelancers/~01ae76fb4e118c2e37" target="_blank" title="Upwork Profile"><i class="fas fa-briefcase"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
